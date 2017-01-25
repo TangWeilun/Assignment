@@ -27,6 +27,7 @@
 		A27A46F21E364A6E00C22175 /* libopencv_video.2.4.13.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A27A46E01E364A6E00C22175 /* libopencv_video.2.4.13.dylib */; };
 		A27A46F31E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A27A46E11E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib */; };
 		A27A46F61E36571E00C22175 /* BP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A27A46F41E36571E00C22175 /* BP.cpp */; };
+		A2F2D8FE1E38B12F0010C46F /* ImagePro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +45,6 @@
 /* Begin PBXFileReference section */
 		A27A46C31E36494E00C22175 /* CharBP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CharBP; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27A46C61E36494E00C22175 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		A27A46CE1E364A5100C22175 /* img001-001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img001-001.png"; sourceTree = "<group>"; };
 		A27A46D01E364A6E00C22175 /* libopencv_calib3d.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_calib3d.2.4.13.dylib; sourceTree = "<group>"; };
 		A27A46D11E364A6E00C22175 /* libopencv_contrib.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_contrib.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_contrib.2.4.13.dylib; sourceTree = "<group>"; };
 		A27A46D21E364A6E00C22175 /* libopencv_core.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_core.2.4.13.dylib; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		A27A46E11E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_videostab.2.4.13.dylib; sourceTree = "<group>"; };
 		A27A46F41E36571E00C22175 /* BP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BP.cpp; sourceTree = "<group>"; };
 		A27A46F51E36571E00C22175 /* BP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BP.hpp; sourceTree = "<group>"; };
+		A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePro.cpp; sourceTree = "<group>"; };
+		A2F2D8FD1E38B12F0010C46F /* ImagePro.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePro.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				A27A46CF1E364A5800C22175 /* OpenCV */,
-				A27A46CD1E364A5100C22175 /* Images */,
 				A27A46C51E36494E00C22175 /* CharBP */,
 				A27A46C41E36494E00C22175 /* Products */,
 			);
@@ -120,16 +121,10 @@
 				A27A46C61E36494E00C22175 /* main.cpp */,
 				A27A46F41E36571E00C22175 /* BP.cpp */,
 				A27A46F51E36571E00C22175 /* BP.hpp */,
+				A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */,
+				A2F2D8FD1E38B12F0010C46F /* ImagePro.hpp */,
 			);
 			path = CharBP;
-			sourceTree = "<group>";
-		};
-		A27A46CD1E364A5100C22175 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				A27A46CE1E364A5100C22175 /* img001-001.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		A27A46CF1E364A5800C22175 /* OpenCV */ = {
@@ -216,6 +211,7 @@
 			files = (
 				A27A46C71E36494E00C22175 /* main.cpp in Sources */,
 				A27A46F61E36571E00C22175 /* BP.cpp in Sources */,
+				A2F2D8FE1E38B12F0010C46F /* ImagePro.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +342,7 @@
 				A27A46CC1E36494E00C22175 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
