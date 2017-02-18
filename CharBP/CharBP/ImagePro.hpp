@@ -21,13 +21,17 @@ using namespace cv;
 class CImagePro {
 private:
     //归一化后图像的高和宽
-    int norSize;
+    const static int norSize = 20;
+    //储存提取的特征，等于长乘以宽
+    int feaSize = 400;
+    double data[400];
     
-    char imageFile[18];
+    char imageFile[15];
     FILE* dataFile;
+    
     
     bool oneImagePro();
 public:
     CImagePro();
-    bool imagePro();
+    void imagePro();
 };

@@ -9,14 +9,24 @@
 #include "ImagePro.hpp"
 
 CImagePro::CImagePro() {
-    norSize = 20;
-    strcpy(imageFile, "./Images/0-0.png");
+    strcpy(imageFile, "./tests/0-0.png");
 }
 
-bool CImagePro::imagePro() {
+void CImagePro::imagePro() {
     
-    imageFile[11] = '2';
-    return oneImagePro();
+    int i, j;
+    dataFile = fopen("test.bin", "wb");
+    for(i=0; i<10; i++) {
+        imageFile[8] = '0' + i;
+        for(j=0; j<10; j++) {
+            imageFile[10] = '0' + j;
+            //std::cout<<imageFile<<std::endl;
+            oneImagePro();
+            fwrite(data,sizeof(double),feaSize,dataFile);
+        }
+    }
+    fclose(dataFile);
+    
 }
 
 bool CImagePro::oneImagePro() {
@@ -59,12 +69,17 @@ bool CImagePro::oneImagePro() {
     dstCvsize.height = dstCvsize.width = norSize;
     imgNor = cvCreateImage(dstCvsize, imgNoG->depth, imgNoG->nChannels);	//构造目标图象
     cvResize(imgNoG, imgNor, CV_INTER_LINEAR);	//缩放源图像到目标图像
-    cvShowImage("nor", imgNor);
-    
-    cvWaitKey(0);
-    //for( int i=0; i<imgNor->imageSize; i++ ) {
-    //std::cout<< imgNor->imageData[i]<<std::endl;
-    //}
+    //cvShowImage("nor", imgNor);
+    //cvWaitKey(0);
+    for( int i=0; i<imgNor->imageSize; i++ ) {
+        data[i] = imgNor->imageData[i];
+        //std::cout<< data[i] <<std::endl;
+        if(data[i]>-1) {
+            data[i] = 1;
+        } else {
+            data[i] = 0;
+        }
+    }
     
     cvReleaseImage(&imgNoG);
     cvReleaseImage(&imgNor);
