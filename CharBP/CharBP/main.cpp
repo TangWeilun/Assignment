@@ -84,7 +84,7 @@ int main()
      BP网络测试
      */
     //读取测试文件
-    fp = fopen("test.bin", "rb");
+    fp = fopen("train.bin", "rb");
     for(int i=0; i<trainsample; i++ ) {
         fread(Data[i], sizeof(double), 400, fp);
         Y[i][0] = i/10;
@@ -104,13 +104,16 @@ int main()
             X[k][i] = count*0.1;
         }
     }
+    
+    
     //读取权值文件
     bp.readtrain();
     //测试
     count = 0;
     for(int i=0; i<trainsample; i++) {
         bp.recognize(X[i]);
-        if(fabs(bp.result[i]-Y[i][0])>0.1) {
+        cout<< bp.result[0] << " "  << Y[i][0] << endl;
+        if(fabs(bp.result[0]-Y[i][0])>0.01) {
             count++;
         }
     }

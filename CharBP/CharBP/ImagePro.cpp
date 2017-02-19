@@ -9,13 +9,13 @@
 #include "ImagePro.hpp"
 
 CImagePro::CImagePro() {
-    strcpy(imageFile, "./train/0-0.png");
+    strcpy(imageFile, "./tests/0-0.png");
 }
 
 void CImagePro::imagePro() {
     
     int i, j;
-    dataFile = fopen("train.bin", "wb");
+    dataFile = fopen("test.bin", "wb");
     for(i=0; i<10; i++) {
         imageFile[8] = '0' + i;
         for(j=0; j<10; j++) {
