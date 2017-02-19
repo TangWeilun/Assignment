@@ -6,28 +6,7 @@
 //  Copyright © 2017年 唐伟伦. All rights reserved.
 //
 
-/*#include "ImagePro.hpp"
-#include "BP.hpp"
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-
-    CImagePro ip;
-    ip.imagePro();
-    CBP bp;
-    char dataFile[10];
-    strcpy(dataFile, "train.bin");
-    bp.readData(dataFile);
-    bp.initBPNework();
-    bp.trainNetwork();
-    strcpy(dataFile, "test.bin");
-    bp.readData(dataFile);
-    bp.testNetwork();
-    
-    
-    return 0;
-}*/
-
+#include "ImagePro.hpp"
 #include"BPNet.hpp"
 #include<cstdlib>
 #include<ctime>
@@ -42,31 +21,41 @@ using std::endl;
 int main()
 {
     
+    /*
+     原始图像处理、需要手动修改要处理的文件名和写入的文件名，分别在CImagePro()函数和imagePro(）函数中修改。
+     由于本系统文件已经生成，故注释掉。
+     */
+    //CImagePro ip;
+    //ip.imagePro();
+    
+    
+    /*
+     提取特征并添加标签
+    */
     //原始数据
     double Data[trainsample][400];
-    
     
     //输入样本
     double X[trainsample][innode];
     //期望输出样本
     double Y[trainsample][outnode];
     
-    
+    //读取训练文件
     FILE *fp = fopen("train.bin", "rb");
     for(int i=0; i<trainsample; i++ ) {
-        fread(Data[i], sizeof(double), innode, fp);
+        fread(Data[i], sizeof(double), 400, fp);
         Y[i][0] = i/10;
         Y[i][0] /= 10;
     }
     
     fclose(fp);
-    
+    //特征提取
     int count;
     for(int k=0; k<trainsample; k++) {
         for(int i=0; i<20; i++) {
             count = 0;
             for(int j=1; j<20; j++) {
-                if(fabs(Data[i][j] - Data[i][j-1])>0.5) {
+                if(Data[k][i*20+j] != Data[k][i*20+j-1]) {
                     count++;
                 }
             }
@@ -74,22 +63,13 @@ int main()
         }
     }
     
-    
-    
-    /*//输入样本
-    double X[trainsample][innode]= {
-        {0,0,0},{0,0,1},{0,1,0},{0,1,1},{1,0,0},{1,0,1},{1,1,0},{1,1,1}
-    };
-    //期望输出样本
-    double Y[trainsample][outnode]={
-        {0},{0.1429},{0.2857},{0.4286},{0.5714},{0.7143},{0.8571},{1.0000}
-    };*/
-    
-    
+    /*
+     BP网络训练
+     */
     CBpNet bp;
     bp.init();
     int times=0;
-    while(bp.error>0.0001)
+    while(bp.error>0.001 && times < 200000)
     {
         bp.e=0.0;
         times++;
@@ -97,29 +77,45 @@ int main()
         cout<<"Times="<<times<<" error="<<bp.error<<endl;
     }
     cout<<"trainning complete..."<<endl;
-    double m[innode]={1,1,1};
-    bp.recognize(m);
-    for(int i=0;i<outnode;++i)
-        cout<<bp.result[i]<<" ";
-    double cha[trainsample][outnode];
-    double mi=100;
-    int index = 0;
-    for(int i=0;i<trainsample;i++)
-    {
-        for(int j=0;j<outnode;j++)
-        {
-            //找差值最小的那个样本
-            cha[i][j]=(double)(fabs(Y[i][j]-bp.result[j]));
-            if(cha[i][j]<mi)
-            {
-                mi=cha[i][j];
-                index=i;
+    //写入权值文件
+    bp.writetrain();
+    
+    /*
+     BP网络测试
+     */
+    //读取测试文件
+    fp = fopen("test.bin", "rb");
+    for(int i=0; i<trainsample; i++ ) {
+        fread(Data[i], sizeof(double), 400, fp);
+        Y[i][0] = i/10;
+        Y[i][0] /= 10;
+    }
+    
+    fclose(fp);
+    
+    for(int k=0; k<trainsample; k++) {
+        for(int i=0; i<20; i++) {
+            count = 0;
+            for(int j=1; j<20; j++) {
+                if(Data[k][i*20+j] != Data[k][i*20+j-1]) {
+                    count++;
+                }
             }
+            X[k][i] = count*0.1;
         }
     }
-    for(int i=0;i<innode;++i)
-        cout<<m[i];
-    cout<<" is "<<index<<endl;
-    cout<<endl;
+    //读取权值文件
+    bp.readtrain();
+    //测试
+    count = 0;
+    for(int i=0; i<trainsample; i++) {
+        bp.recognize(X[i]);
+        if(fabs(bp.result[i]-Y[i][0])>0.1) {
+            count++;
+        }
+    }
+    
+    for(int i=0; i<outnode; i++)
+        cout<< "error:" << count << endl;
     return 0;
 }

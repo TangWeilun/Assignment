@@ -11,7 +11,7 @@
 using namespace std;
 
 #define  innode 20  //输入结点数
-#define  hidenode 20//隐含结点数
+#define  hidenode 30//隐含结点数
 #define  outnode 1 //输出结点数
 #define  trainsample 100//BP训练样本数
 class CBpNet

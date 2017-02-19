@@ -126,8 +126,6 @@ double *CBpNet::recognize(double *p)
         for(int i=0;i<innode;i++)
             o1[j]=o1[j]+w[i][j]*x[i]; //隐含层各单元激活值
         x1[j]=1.0/(1.0+exp(-o1[j]-b1[j])); //隐含层各单元输出
-        //if(o1[j]+b1[j]>0) x1[j]=1;
-        //    else x1[j]=0;
     }
     
     for(int k=0;k<outnode;k++)
@@ -136,8 +134,6 @@ double *CBpNet::recognize(double *p)
         for(int j=0;j<hidenode;j++)
             o2[k]=o2[k]+w1[j][k]*x1[j];//输出层各单元激活值
         x2[k]=1.0/(1.0+exp(-o2[k]-b2[k]));//输出层各单元输出
-        //if(o2[k]+b2[k]>0) x2[k]=1;
-        //else x2[k]=0;
     }
     
     for(int k=0;k<outnode;k++)

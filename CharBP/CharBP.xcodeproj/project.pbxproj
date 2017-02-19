@@ -26,7 +26,6 @@
 		A27A46F11E364A6E00C22175 /* libopencv_superres.2.4.13.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A27A46DF1E364A6E00C22175 /* libopencv_superres.2.4.13.dylib */; };
 		A27A46F21E364A6E00C22175 /* libopencv_video.2.4.13.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A27A46E01E364A6E00C22175 /* libopencv_video.2.4.13.dylib */; };
 		A27A46F31E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A27A46E11E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib */; };
-		A27A46F61E36571E00C22175 /* BP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A27A46F41E36571E00C22175 /* BP.cpp */; };
 		A2CF7D7D1E58210D00FBE2FB /* BPNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2CF7D7B1E58210D00FBE2FB /* BPNet.cpp */; };
 		A2F2D8FE1E38B12F0010C46F /* ImagePro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */; };
 /* End PBXBuildFile section */
@@ -64,8 +63,6 @@
 		A27A46DF1E364A6E00C22175 /* libopencv_superres.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_superres.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_superres.2.4.13.dylib; sourceTree = "<group>"; };
 		A27A46E01E364A6E00C22175 /* libopencv_video.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_video.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_video.2.4.13.dylib; sourceTree = "<group>"; };
 		A27A46E11E364A6E00C22175 /* libopencv_videostab.2.4.13.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.13.dylib; path = ../../../ProgramLibrary/OpenCV/libopencv_videostab.2.4.13.dylib; sourceTree = "<group>"; };
-		A27A46F41E36571E00C22175 /* BP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BP.cpp; sourceTree = "<group>"; };
-		A27A46F51E36571E00C22175 /* BP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BP.hpp; sourceTree = "<group>"; };
 		A2CF7D7B1E58210D00FBE2FB /* BPNet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BPNet.cpp; sourceTree = "<group>"; };
 		A2CF7D7C1E58210D00FBE2FB /* BPNet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BPNet.hpp; sourceTree = "<group>"; };
 		A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePro.cpp; sourceTree = "<group>"; };
@@ -122,8 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				A27A46C61E36494E00C22175 /* main.cpp */,
-				A27A46F41E36571E00C22175 /* BP.cpp */,
-				A27A46F51E36571E00C22175 /* BP.hpp */,
 				A2F2D8FC1E38B12F0010C46F /* ImagePro.cpp */,
 				A2F2D8FD1E38B12F0010C46F /* ImagePro.hpp */,
 				A2CF7D7B1E58210D00FBE2FB /* BPNet.cpp */,
@@ -215,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27A46C71E36494E00C22175 /* main.cpp in Sources */,
-				A27A46F61E36571E00C22175 /* BP.cpp in Sources */,
 				A2F2D8FE1E38B12F0010C46F /* ImagePro.cpp in Sources */,
 				A2CF7D7D1E58210D00FBE2FB /* BPNet.cpp in Sources */,
 			);
